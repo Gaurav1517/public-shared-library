@@ -1,3 +1,3 @@
-def call() {
-    sh "docker run -d --name ${JOB_NAME_LOWER} -p 3000:3000 ${IMAGE_NAME}:latest"
+def call(String imageName, String jobNameLower) {
+    sh "docker run -d --name ${jobNameLower} -p 3000:3000 ${imageName}:latest"
 }
