@@ -1,9 +1,6 @@
-def call() {
-    sh "docker tag ${IMAGE_TAG} ${IMAGE_NAME}:v${BUILD_NUMBER}"
-    sh "docker tag ${IMAGE_TAG} ${IMAGE_NAME}:latest"
-}
-def call(String JOB_NAME, int BUILD_NUMBER, String docker_user) {
+def call(String imageName, int buildNumber, String dockerUsername) {
     sh """
-        docker tag ${JOB_NAME}:v${BUILD_NUMBER} ${docker_user}/${JOB_NAME}:latest
+        docker tag ${imageName}:${buildNumber} ${dockerUsername}/${imageName}:v${buildNumber}
+        docker tag ${imageName}:${buildNumber} ${dockerUsername}/${imageName}:latest
     """
 }
