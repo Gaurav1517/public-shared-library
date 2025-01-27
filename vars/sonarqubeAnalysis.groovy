@@ -3,14 +3,10 @@ def call(Map params = [:]) {
     def projectName = params.get('projectName', 'default-project-name')
     def projectKey = params.get('projectKey', 'default-project-key')
 
-    stage("Sonarqube Analysis") {
-        steps {
-            withSonarQubeEnv('sonar-server') {
-                sh """
-                    \$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=${projectName} \
-                    -Dsonar.projectKey=${projectKey}
-                """
-            }
-        }
+    withSonarQubeEnv('sonar-server') {
+        sh """
+            \$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=${projectName} \
+            -Dsonar.projectKey=${projectKey}
+        """
     }
 }
