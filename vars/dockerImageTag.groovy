@@ -1,6 +1,4 @@
-def call(String imageName, int buildNumber, String dockerUsername) {
-    sh """
-        docker tag ${imageName}:${buildNumber} ${dockerUsername}/${imageName}:v${buildNumber}
-        docker tag ${imageName}:${buildNumber} ${dockerUsername}/${imageName}:latest
-    """
+def call(String imageTag, String imageName, int buildNumber) {
+    sh "docker tag ${imageTag} ${imageName}:v${buildNumber}"
+    sh "docker tag ${imageTag} ${imageName}:latest"
 }
