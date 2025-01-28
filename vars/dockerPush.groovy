@@ -12,7 +12,6 @@ def call(String imageName, String buildNumber) {
             error "Invalid image name or build number: ${imageName}:${buildNumber}"
         }
         sh "echo ${docker_pass} | docker login -u ${docker_user} --password-stdin"
-        sh "docker push ${imageName}:${buildNumber}"
         sh "docker push ${imageName}:latest"
     }
 }
