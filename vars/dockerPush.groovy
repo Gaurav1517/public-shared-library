@@ -17,7 +17,7 @@ def call(String imageName, String buildNumber) {
         sh "echo ${docker_pass} | docker login -u ${docker_user} --password-stdin"
         
         // Correct Docker push commands
-        sh "docker push ${imageName}:${buildNumber}"  // Push the versioned image (e.g., starbucks:v2)
+       // sh "docker push ${imageName}:${buildNumber}"  // Push the versioned image (e.g., starbucks:v2)
         sh "docker push ${imageName}:latest"  // Push the 'latest' tag
     }
 }
